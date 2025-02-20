@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FC.DAL", "Database\FC.DAL.csproj", "{064DC7DC-F4E7-43F0-8C70-5EE5205071C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FC.BAL", "FC.BAL\FC.BAL.csproj", "{BC73C8DB-FABD-400C-975E-524FCF999773}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodCourt", "FoodCourt\FoodCourt.csproj", "{805752F8-219E-4F84-ABDB-AB260945400F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{064DC7DC-F4E7-43F0-8C70-5EE5205071C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{064DC7DC-F4E7-43F0-8C70-5EE5205071C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{064DC7DC-F4E7-43F0-8C70-5EE5205071C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC73C8DB-FABD-400C-975E-524FCF999773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC73C8DB-FABD-400C-975E-524FCF999773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC73C8DB-FABD-400C-975E-524FCF999773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC73C8DB-FABD-400C-975E-524FCF999773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{805752F8-219E-4F84-ABDB-AB260945400F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805752F8-219E-4F84-ABDB-AB260945400F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805752F8-219E-4F84-ABDB-AB260945400F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805752F8-219E-4F84-ABDB-AB260945400F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
