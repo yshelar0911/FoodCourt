@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using FC.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 
-namespace FC.DAL.Models;
+namespace FC.Database.Context;
 
 public partial class QuickKartDbContext : DbContext
 {
@@ -38,7 +39,7 @@ public partial class QuickKartDbContext : DbContext
             .Build()
             .GetConnectionString("QuickKartDBConnectionString"));
 
-   
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
