@@ -1,4 +1,5 @@
 ﻿using FC.DAL.Interface;
+using FC.DAL.Models;
 using FC.DAL.Repositary;
 using FC.Database.Context;
 using Microsoft.Extensions.Logging;
@@ -29,18 +30,23 @@ namespace FCConsoleApp1
             }
 
 
-            var products = program.fCRepo.GetProductsOnCategoryId(1);
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("ProductId\tProductName\tCategoryId");
-            Console.WriteLine("----------------------------------");
-            foreach(var product in products)
+            byte categoryId = 1;
+            List<Product> lstProducts = program.fCRepo.GetProductsOnCategoryId(categoryId);
+            if (lstProducts.Count == 0)
             {
-                Console.WriteLine(product.ProductId ); 
-                Console.WriteLine(product.ProductName);
-                Console.WriteLine(product.CategoryId);
+                Console.WriteLine("No products available under the category = " + categoryId);
             }
-          
-        
+            else
+            {
+                Console.WriteLine("{0,-15}{1,-30}{2,-15}{3,-10}{4}", "ProductId", "ProductName", "CategoryId", "Price", "QuantityAvailable");
+                Console.WriteLine("---------------------------------------------------------------------------------------");
+                foreach (var product in lstProducts)
+                {
+                    Console.WriteLine("{0,-15}{1,-30}{2,-15}{3,-10}{4}", product.ProductId, product.ProductName, product.CategoryId, product.Price, product.QuantityAvailable);
+                }
+            }
+
+
         }
     }
         }
