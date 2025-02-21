@@ -6,7 +6,7 @@ namespace FoodCourt.Controllers
 {
 
     [ApiController]
-    [Route("FoodCourt/GetCategory")]
+    [Route("FoodCourt")]
    
     public class FoodCourtController:Controller
     {
@@ -17,10 +17,17 @@ namespace FoodCourt.Controllers
             this.fCBusiness = fCBusiness;
         }
         
-        [HttpGet(Name = "GetCategory")]
+        [HttpGet, Route("GetCategory")]
         public IEnumerable<Category> GetCategory()
         {
             var a = fCBusiness.Category();
+            return a;
+        }
+
+        [HttpGet,Route("GetProductsOnCategoryId")]
+        public IEnumerable<Product> GetProductsOnCategoryId(byte categoryId)
+        {
+            var a = fCBusiness.GetProductsOnCategoryId(categoryId);
             return a;
         }
     }
