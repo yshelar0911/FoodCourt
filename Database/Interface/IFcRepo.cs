@@ -13,5 +13,7 @@ namespace FC.DAL.Interface
 
         public List<Product> GetProductsOnCategoryId(byte categoryId);
 
+        public bool Login(string username, string password);
+
     }
 }

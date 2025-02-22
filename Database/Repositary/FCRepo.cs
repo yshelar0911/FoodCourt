@@ -50,5 +50,24 @@ namespace FC.DAL.Repositary
             }
             return products != null ? products : new List<Product>();
         }
+
+        public bool Login(string username, string password)
+        {
+            bool status = false;
+            try
+            {
+                var user = QuickKartDbContext.Users.Where(u => u.EmailId == username && u.UserPassword == password).FirstOrDefault();
+                if (user != null)
+                {
+                    status = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Error in Login: {ex.Message}");
+                status = false;
+            }
+            return status;
+        }
     }
 }

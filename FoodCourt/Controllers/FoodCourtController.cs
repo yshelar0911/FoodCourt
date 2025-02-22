@@ -30,5 +30,13 @@ namespace FoodCourt.Controllers
             var a = fCBusiness.GetProductsOnCategoryId(categoryId);
             return a;
         }
+
+        [HttpPost, Route("UserLogin")]
+
+        public bool UserLogin(string username, string password)
+        {
+            var a = fCBusiness.UserLogin(username, password);
+            return a;
+        }
     }
 }

@@ -43,5 +43,19 @@ namespace FC.BAL.BAL
             }
             return products;
         }
+
+        public bool UserLogin(string username, string password)
+        {
+            bool status = false;
+            try
+            {
+                status = fCRepo.Login(username, password);
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return status;
+        }
     }
 }

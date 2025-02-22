@@ -10,7 +10,7 @@ namespace FoodCourt
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set; }
 
         public Startup(IConfiguration configuration)
         {
