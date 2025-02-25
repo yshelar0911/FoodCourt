@@ -61,6 +61,7 @@ namespace FoodCourt
 
             // Enable CORS, Swagger, and routing
             app.UseCors("AllowAll");
+            app.UseMiddleware<CustomMiddleware>();
             app.UseSwagger();
             app.UseSwaggerUI();
             app.UseRouting();
