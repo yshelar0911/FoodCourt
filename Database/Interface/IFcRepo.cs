@@ -15,5 +15,8 @@ namespace FC.DAL.Interface
 
         public bool Login(string username, string password);
 
+        public bool resisterUser(string userName, string emailId, string password, char gender, DateOnly date, string address);
+
+
     }
 }

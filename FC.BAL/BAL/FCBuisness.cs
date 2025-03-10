@@ -57,5 +57,20 @@ namespace FC.BAL.BAL
             }
             return status;
         }
+
+        public bool NewLogin(string userName, string emailId, string password, char gender, DateOnly date, string address)
+        {
+            bool status = false;
+            try
+            {
+                status = fCRepo.resisterUser(userName,emailId, password, gender, date, address);
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return status;
+
+        }
     }
 }

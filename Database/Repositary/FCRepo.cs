@@ -1,6 +1,9 @@
-﻿using FC.DAL.Interface;
+﻿using Azure.Identity;
+using FC.DAL.Interface;
 using FC.DAL.Models;
 using FC.Database.Context;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -66,6 +69,41 @@ namespace FC.DAL.Repositary
             {
                 logger.LogError($"Error in Login: {ex.Message}");
                 status = false;
+            }
+            return status;
+        }
+
+        public bool resisterUser(string userName,string emailId, string password, char gender,  DateOnly date, string address)
+        {
+            bool status = false;
+            int noOfrows = 0;
+            int result = 0;
+
+            try
+            {
+                SqlParameter prmPass = new SqlParameter("@UserPassword", password);
+                SqlParameter prmEmail = new SqlParameter("@EmailId", emailId);
+                SqlParameter prmGender = new SqlParameter("@Gender", gender);
+                SqlParameter prmDate = new SqlParameter("@DateOfBirth", date);
+                SqlParameter prmAddress = new SqlParameter("@Address", address);
+                SqlParameter prmUserName = new SqlParameter("@UserName", userName);
+
+                SqlParameter prmReturnResult = new SqlParameter("@ReturnResult", System.Data.SqlDbType.Int);
+                prmReturnResult.Direction = System.Data.ParameterDirection.Output;
+
+                noOfrows= QuickKartDbContext.Database.ExecuteSqlRaw("exec usp_RegisterUser @UserPassword,@Gender,@EmailId,@DateOfBirth,@Address,@UserName",  prmPass,  prmGender, prmEmail, prmDate, prmAddress, prmUserName);
+                
+                if(noOfrows > 0)
+                {
+                    status = true;
+                    //result = Convert.ToInt32(prmReturnResult.Value);
+                }
+            }
+            catch (Exception ex)
+            {//
+                status = false;
+                logger.LogError($"Error in resisterUser: {ex.Message}");
+
             }
             return status;
         }

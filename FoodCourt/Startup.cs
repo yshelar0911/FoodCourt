@@ -4,6 +4,7 @@ using FC.DAL.Interface;
 using FC.DAL.Repositary;
 using FC.Database.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
 
 namespace FoodCourt
@@ -43,8 +44,11 @@ namespace FoodCourt
             services.AddSwaggerGen();
 
             // Register DbContext (Fixing incorrect builder.Services usage)
-            services.AddDbContext<QuickKartDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("QuickKartDBConnectionString")));
+            services.AddDbContext<QuickKartDbContext>(options => {
+            options.UseSqlServer(Configuration.GetConnectionString("QuickKartDBConnectionString"));
+            options.LogTo(Console.WriteLine, LogLevel.Information);
+                });
+
 
             // Register business logic and repository layer
             services.AddScoped<IFCBusiness, FCBuisness>();
@@ -61,7 +65,7 @@ namespace FoodCourt
 
             // Enable CORS, Swagger, and routing
             app.UseCors("AllowAll");
-            app.UseMiddleware<CustomMiddleware>();
+          //  app.UseMiddleware<CustomMiddleware>();
             app.UseSwagger();
             app.UseSwaggerUI();
             app.UseRouting();
